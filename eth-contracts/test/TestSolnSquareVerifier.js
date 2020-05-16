@@ -22,42 +22,42 @@ contract("SolnSquareVerifier", (accounts, web3) =>{
             });
 
             await this.contract.addSolution(
-                TEST.correctProof.A,
-                TEST.correctProof.A_p,
-                TEST.correctProof.B,
-                TEST.correctProof.B_p,
-                TEST.correctProof.C,
-                TEST.correctProof.C_p,
-                TEST.correctProof.H,
-                TEST.correctProof.K,
-                TEST.correctInput,
+                TEST.correctProof.a,
+                TEST.correctProof.b,
+                TEST.correctProof.c,
+                // TEST.correctProof.B_p,
+                // TEST.correctProof.C,
+                // TEST.correctProof.C_p,
+                // TEST.correctProof.H,
+                // TEST.correctProof.K,
+                TEST.correctProof.inputs,
                 {from: TEST.contractOwner}
             );
         });
         it("can not add the same solution again", async function(){
             await this.contract.addSolution(
-                TEST.correctProof.A,
-                TEST.correctProof.A_p,
-                TEST.correctProof.B,
-                TEST.correctProof.B_p,
-                TEST.correctProof.C,
-                TEST.correctProof.C_p,
-                TEST.correctProof.H,
-                TEST.correctProof.K,
-                TEST.correctInput,
+                TEST.correctProof.a,
+                TEST.correctProof.b,
+                TEST.correctProof.c,
+                // TEST.correctProof.B_p,
+                // TEST.correctProof.C,
+                // TEST.correctProof.C_p,
+                // TEST.correctProof.H,
+                // TEST.correctProof.K,
+                TEST.correctProof.inputs,
                 {from: TEST.contractOwner}
             );
             try {
                 await this.contract.addSolution(
-                    TEST.correctProof.A,
-                    TEST.correctProof.A_p,
-                    TEST.correctProof.B,
-                    TEST.correctProof.B_p,
-                    TEST.correctProof.C,
-                    TEST.correctProof.C_p,
-                    TEST.correctProof.H,
-                    TEST.correctProof.K,
-                    TEST.correctInput,
+                    TEST.correctProof.a,
+                TEST.correctProof.b,
+                TEST.correctProof.c,
+                // TEST.correctProof.B_p,
+                // TEST.correctProof.C,
+                // TEST.correctProof.C_p,
+                // TEST.correctProof.H,
+                // TEST.correctProof.K,
+                TEST.correctProof.inputs,
                     {from: TEST.contractOwner}
                 );
                 assert.fail("Existing solution can not be added again. But it has just happened");
@@ -68,15 +68,15 @@ contract("SolnSquareVerifier", (accounts, web3) =>{
 
         it("can mint a token when there is solution available for to address", async function () {
             await this.contract.addSolution(
-                TEST.correctProof.A,
-                TEST.correctProof.A_p,
-                TEST.correctProof.B,
-                TEST.correctProof.B_p,
-                TEST.correctProof.C,
-                TEST.correctProof.C_p,
-                TEST.correctProof.H,
-                TEST.correctProof.K,
-                TEST.correctInput,
+                TEST.correctProof.a,
+                TEST.correctProof.b,
+                TEST.correctProof.c,
+                // TEST.correctProof.B_p,
+                // TEST.correctProof.C,
+                // TEST.correctProof.C_p,
+                // TEST.correctProof.H,
+                // TEST.correctProof.K,
+                TEST.correctProof.inputs,
                 {from: TEST.firstTokenRecipient}
             );
             let tokensBefore = await this.contract.totalSupply.call();
@@ -101,15 +101,15 @@ contract("SolnSquareVerifier", (accounts, web3) =>{
         it("can not mint a token when the solution had been used already to mint the token", async function () {
             let tokensBefore = await this.contract.totalSupply.call();
             await this.contract.addSolution(
-                TEST.correctProof.A,
-                TEST.correctProof.A_p,
-                TEST.correctProof.B,
-                TEST.correctProof.B_p,
-                TEST.correctProof.C,
-                TEST.correctProof.C_p,
-                TEST.correctProof.H,
-                TEST.correctProof.K,
-                TEST.correctInput,
+                TEST.correctProof.a,
+                TEST.correctProof.b,
+                TEST.correctProof.c,
+                // TEST.correctProof.B_p,
+                // TEST.correctProof.C,
+                // TEST.correctProof.C_p,
+                // TEST.correctProof.H,
+                // TEST.correctProof.K,
+                TEST.correctProof.inputs,
                 {from: TEST.firstTokenRecipient}
             );
             await this.contract.mint(TEST.firstTokenRecipient, tokensBefore + 1, {from: TEST.contractOwner});

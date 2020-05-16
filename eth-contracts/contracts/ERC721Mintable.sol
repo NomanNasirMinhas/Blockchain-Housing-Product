@@ -155,7 +155,7 @@ contract ERC721 is Pausable, ERC165 {
     mapping (address => mapping (address => bool)) private _operatorApprovals;
 
     bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
-
+    
     constructor () public {
         // register the supported interfaces to conform to ERC721 via ERC165
         _registerInterface(_INTERFACE_ID_ERC721);
@@ -600,7 +600,7 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -calls the superclass mint and setTokenURI functions
 
 contract CustomERC721Token is ERC721Metadata {
-    constructor(string memory name, string memory symbol) ERC721Metadata(name, symbol, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") public {}
+    constructor(string memory name, string memory symbol) ERC721Metadata("Neo Real State", "NRS", "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") public {}
 
     function mint(address to, uint tokenId)
     public

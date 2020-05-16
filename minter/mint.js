@@ -2,13 +2,13 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 const TruffleContract = require('truffle-contract');
 const Web3 = require("web3");
 
-const INFURA_KEY = "3e5d33f1b1f74340973a654e01d28b76";
+const INFURA_KEY = "65aa6605125e4029a39ba21274cc9723";
 const NETWORK = "rinkeby";
 const fs = require('fs');
 // This is Contract Address on Local Development Network
-const SOLN_SQUARE_VERIFIER_AT_RINKEBY = "0x4694d4f79E3124DB140C47764c37c5811f56E10e";
+const SOLN_SQUARE_VERIFIER_AT_RINKEBY = "0x46ded160F6f929f04854625a1282BF303c513b48";
 
-const OWNER_ACCOUNT = "0x62fd352ac07c6135c963d3C032616ea62B9241B4";
+const OWNER_ACCOUNT = "0x3B3C254e206f45b7c8b2Fff2DCf390A007E0c5E1";
 
 main()
     .then(result => {
@@ -124,7 +124,7 @@ function createWalletProvider(network, mnemonic){
         return new HDWalletProvider(mnemonic, `https://${NETWORK}.infura.io/v3/${INFURA_KEY}`);
     }
     else if(network === "development") {
-        return new Web3.providers.WebsocketProvider("ws://localhost:8545");
+        return new Web3.providers.WebsocketProvider("ws://localhost:7545");
     }
 }
 

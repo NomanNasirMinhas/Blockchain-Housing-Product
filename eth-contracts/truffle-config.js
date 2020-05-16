@@ -1,23 +1,28 @@
-var HDWalletProvider = require("truffle-hdwallet-provider");
-var mnemonic = "kind journey jazz arrange retire bracket liar mixture twin void worry peasant";
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const infuraKey = "65aa6605125e4029a39ba21274cc9723";
+//
+// const fs = require('fs');
+const mnemonic = "atom zoo humble crash wasp trash ridge embrace flip rookie window know";
+var localmnemonic = "baby donate remain nominee excuse tube usual blush slim decorate trap half";
 
 module.exports = {
   networks: {
     development: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "HTTP://127.0.0.1:7545", 0, 50);
+        return new HDWalletProvider(localmnemonic, "HTTP://127.0.0.1:7545", 0, 50);
       },
       network_id: '*',
       gas: 9999999,
       websockets: true
     },
-    development_cli: {
-        host: "127.0.0.1",
-        port: 8545,
-        network_id: "*",
-        websockets: true
+    rinkeby: {
+      provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`),
+        network_id: 4,       // rinkeby's id
+        gas: 10000000,        // rinkeby has a lower block limit than mainnet
+        gasPrice: 10000000000
     },
   },
+
 
   // Set default mocha options here, use special reporters etc.
   mocha: {

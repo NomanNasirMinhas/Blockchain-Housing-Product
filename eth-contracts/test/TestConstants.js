@@ -1,24 +1,27 @@
 const util = require("util");
 const url = require("url");
 const fs = require("fs");
+const correctProof = require("./proof3");
+const secondCorrectProof = require("./proof4");
+const badProof = require("./badProof");
 
-module.exports = function (accounts, web3){
-    var result;
-    let correctProofFile = fs.readFileSync(
-        "/Users/py/IdeaProjects/Blockchain-ND-Capstone/zokrates/code/square/proof3.json",
-        "utf-8"
-    );
-    let badProofFile = fs.readFileSync(
-        "/Users/py/IdeaProjects/Blockchain-ND-Capstone/zokrates/code/square/badProof.json",
-        "utf-8"
-    );
-    let secondCorrectProofFile = fs.readFileSync(
-        "/Users/py/IdeaProjects/Blockchain-ND-Capstone/zokrates/code/square/proof12.json",
-        "utf-8"
-    );
-    let correctProof = JSON.parse(correctProofFile);
-    let badProof = JSON.parse(badProofFile);
-    let secondCorrectProof = JSON.parse(secondCorrectProofFile);
+ module.exports = function (accounts, web3){
+//     var result;
+//     let correctProofFile = fs.readFileSync(
+//         "proof.json",
+//         "utf-8"
+//     );
+//     let badProofFile = fs.readFileSync(
+//         "badProof.json",
+//         "utf-8"
+//     );
+//     let secondCorrectProofFile = fs.readFileSync(
+//         "proof.json",
+//         "utf-8"
+//     );
+//     let correctProof = JSON.parse(correctProofFile);
+//     let badProof = JSON.parse(badProofFile);
+//     let secondCorrectProof = JSON.parse(secondCorrectProofFile);
 
     try {
         result = {
